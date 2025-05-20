@@ -42,10 +42,16 @@ def main():
         updatable.update(dt)
 
         #collision logic
-        for item in asteroids:
-            if item.collision(player):
+        for asteroid in asteroids:
+            if asteroid.collision(player):
                 print("Game over!")
                 sys.exit()
+
+        # collistion check wiht bullet
+            for bullet in shots:
+                if asteroid.collision(bullet):
+                    bullet.kill()
+                    asteroid.split()
 
         screen.fill("black")
 
